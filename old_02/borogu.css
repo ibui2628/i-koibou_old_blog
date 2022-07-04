@@ -1,0 +1,44 @@
+h1{ font-size:50pt;
+  color:#1e90ff;
+}
+h2{
+  color:red;
+}
+
+html{
+/*  background-color:green;*/
+font-family: "sans-serif",sans-serif;
+}
+#gnav{
+
+background-color: #00FFFF;
+
+}
+
+#gnav ul{
+
+overflow: hidden;
+
+}
+
+#gnav li{
+
+float: left;
+
+width: 280px;
+
+}
+
+
+
+
+.a {
+  padding: 0.00000005em 1em;
+    margin: 2em 0;
+    color: #2c2c2f;
+background-image: url(WIN_20200819_17_31_31_Pro.jpg);
+  //  background: #ffd700;/*背景色*/
+	text-align: center;
+}
+.v {
+	display: inline-block;

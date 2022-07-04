@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="daiza.css">
+    <title>手あらいサポートマシン制作 -電気系＋ソフトウェア工作・改造</title>
+    <link rel="icon" href="https://ikoibou-oldblog-ibui2628.netlify.app/old_02//123.gif" />
+  </head>
+  <body>
+<!--<h2>テストです　(一応使用できますが未完成です。)<br></h2>-->
+    <img src="https://ikoibou-oldblog-ibui2628.netlify.app/old_02/neumu.JPG" title="ネーム" height="392" class="images">
+
+    <div id="sampleHeader" class="headerStyle">
+      <div class="hdStrBig"><a href="https://ikoibou-oldblog-ibui2628.netlify.app/old_02/houmu_kou.html" class="sampley">ホーム</a></div>
+      <div class="hdStrBig"><a href="https://ikoibou-oldblog-ibui2628.netlify.app/old_02/borogu_kou.html" class="sampley">ブログ一</a></div>
+      <div class="hdStrBig"><a href="https://ikoibou-oldblog-ibui2628.netlify.app/old_02/rinnku.html" class="sampley">その他のリンク</a></div>
+    <!--  <div id="hdBtnArea" class="hdBtnStyle" onclick="goScroll('H')">▲</div>-->
+    </div>
+
+<h1 style="text-align:center">～手あらいサポートマシン制作～</h1>
+<h3>新型コロナウイルスの感染拡大を受けて、手あらいサポートマシンを紹介します。<br></h3>
+<h3>◇これはものづくり講座でオンライン授業で制作した物です。◇</h3>
+<a href="https://ns-fukuoka.com/online-lesson/tearai-support-machine/" target="_blank" rel="noopener noreferrer" class="s_link">手洗いサポートマシンをつくろう！(このサイトはロックされています。)</a>
+
+<h2>機能</h2>
+<h3>感染予防には手あらいが大切ですので<br>LEDとイラストで正しい手洗いの手順・時間を教えてくれる機械です。<br>センサー部に手をかざずと機械がうごきます。</h3>
+<h3>動画</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/o5LS9SImCAA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2>部品</h2>
+<h3 style="text-align:center">部品表</h3>
+<table class="tableArea" id="makeImg">
+  <tr>
+    <th>部品名</th><th>備考</th><th>型番など</th><th>部品リンク</th><th>数量</th>
+  </tr>
+  <tr>
+    <td>LED</td><td>データ12</td><td>データ12</td><td>データ13</td><td>６</td>
+  </tr>
+  <tr>
+    <td>抵抗器</td><td>データ12</td><td>330Ω</td><td>データ23</td><td>６</td>
+  </tr>
+  <tr>
+    <td>抵抗器</td><td>データ12</td><td>100Ω</td><td>データ34</td><td>1</td>
+  </tr>
+  <tr>
+    <td>抵抗器</td><td>データ12</td><td>10kΩ</td><td>データ43</td><td>1</td>
+  </tr>
+  <tr>
+    <td>赤外線LED</td><td>データ52</td><td>データ12</td><td>データ53</td><td>１</td>
+  </tr>
+  <tr>
+    <td>赤外線フォトトランジスタ</td><td>データ62</td><td>データ12</td><td>データ63</td><td>１</td>
+  </tr>
+  <tr>
+    <td>Arduino</td><td>データ72</td><td>ArduinoUNO</td><td>データ73</td><td>１</td>
+  </tr>
+  <tr>
+    <td>Arduinoの心臓部</td><td>データ82</td><td>ATmega168</td><td>データ83</td><td>１</td>
+  </tr>
+  <tr>
+    <td>基板</td><td>データ82</td><td>ｊｊｊｊ</td><td>データ83</td><td>１</td>
+  </tr>
+  <tr>
+    <td>ブレッドボード</td><td>データ82</td><td>ｊｊｊｊ</td><td>データ83</td><td>１</td>
+  </tr>
+  <tr>
+    <td>ジャンパー線</td><td>データ82</td><td>ｊｊｊｊ</td><td>データ83</td><td>少々</td>
+  </tr>
+
+</table>
+
+<h2>Arduinoのインストール</h2>
+<h3>これはArduinoを使用します。なのでArduinoIDEをインストールしてください。<br></h3>
+<a href="https://www.google.com/search?ei=qX_IX9-ENrCMr7wPiNyiyAw&q=arduino+ide+%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB&oq=arduino+i&gs_lcp=CgZwc3ktYWIQARgDMgUIABCxAzICCAAyCAgAELEDEIMBMgIIADICCAAyAggAMgIIADICCABQoQ1YoQ1g2htoAHACeACAAWmIAcoBkgEDMS4xmAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=psy-ab" target="_blank" rel="noopener noreferrer" class="s_link">こちらの検索結果から探してください。</a>
+<h2>センサ部のはたらき</h2>
+<h3>以下の回路で検証しました。</h3>
+<img src="https://ikoibou-oldblog-ibui2628.netlify.app/old_01/borogu/tam/1-1.jpg">
+<h3>検証結果</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uMwV0jR9Z4Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2>制作</h2>
+<h3>はじめにイラストを貼ってください</h3>
+<a href="" download>イラストをダウンロード⇓</a>
+<h3>早速作り始めましょう<br>(半田付けの方法は説明しませんので「半田付け 基本」などと調べて下さい。)</h3>
+<h3>イラストの紙に穴をあけて差し込みます。</h3>
+<h3>回路図(LED回路のみ)</h3>
+<img src="https://ikoibou-oldblog-ibui2628.netlify.app/old_01/borogu/tam/1-2.jpg" alt="回路図">
+<h3>実態配線図(LED回路のみ)</h3>
+<img src="https://ikoibou-oldblog-ibui2628.netlify.app/old_01/borogu/tam/1-3.jpg" alt="実態配線図">
+<h3>実態配線図(センサー回路)</h3>
+<img src="https://ikoibou-oldblog-ibui2628.netlify.app/old_01/borogu/tam/1-4.jpg" alt="実態配線図">
+<h2>プログラム書き込み</h2>
+<a href="https://spiceman.jp/arduino-program-writing/" target="_blank" rel="noopener noreferrer" class="s_link">Arduinoぴプログラム書き込み方法</a>
+<h3>プログラム</h3>
+<code>
+<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#00ffff;color:#000;">
+<li style="background-color:#adff2f;"></li>
+<li style="background-color:#00ff00;"></li>
+<li style="background-color:#adff2f;">void setup() {</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;// put your setup code here, to run once:</li>
+<li style="background-color:#adff2f;"></li>
+<li style="background-color:#00ff00;">&nbsp;</li>
+<li style="background-color:#adff2f;"></li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;pinMode(11, OUTPUT);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;pinMode(4, OUTPUT);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;pinMode(5, OUTPUT);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;pinMode(6, OUTPUT);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;pinMode(7, OUTPUT);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;pinMode(8, OUTPUT);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;pinMode(9, OUTPUT);</li>
+<li style="background-color:#adff2f;"></li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(4, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(5, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(6, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(7, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(8, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(9, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;delay(1500);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#adff2f;"></li>
+<li style="background-color:#00ff00;">}</li>
+<li style="background-color:#adff2f;"></li>
+<li style="background-color:#00ff00;">void loop() {</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;// put your main code here, to run repeatedly:</li>
+<li style="background-color:#00ff00;">&nbsp;</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;delay(5000);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;delay(5000);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;delay(5000);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;delay(5000);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;delay(5000);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;</li>
+<li style="background-color:#adff2f;">}</li>
+</ol></code>
+<h2>改造</h2>
+<h3>回路とプログラムを改造しました。</h3>
+<h3>実態配線図</h3>
+<img src="picture\1-5.jpg" alt="">
+<h3>プログラム</h3>
+<code>
+<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#00ffff;color:#000;">
+<li style="background-color:#adff2f;">void setup() {</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;// put your setup code here, to run once:</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;pinMode(11, OUTPUT);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;pinMode(4, OUTPUT);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;pinMode(5, OUTPUT);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;pinMode(6, OUTPUT);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;pinMode(7, OUTPUT);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;pinMode(8, OUTPUT);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;pinMode(9, OUTPUT);</li>
+<li style="background-color:#00ff00;"></li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(4, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(5, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(6, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(7, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(8, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(9, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;delay(1500);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#00ff00;">}</li>
+<li style="background-color:#adff2f;"></li>
+<li style="background-color:#00ff00;">void loop() {</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;// put your main code here, to run repeatedly:</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;delay(5000);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;delay(5000);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;delay(5000);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;delay(5000);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;delay(5000);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;delay(5000);</li>
+<li style="background-color:#00ff00;"></li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;delay(500);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; 2 ; i++) {</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, HIGH);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, HIGH);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delay(500);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(4, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(5, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(6, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(7, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(8, LOW);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(9, LOW);</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delay(500);</li>
+<li style="background-color:#adff2f;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#adff2f;">//まだこのプログラムは未完成です。</li>
+<li style="background-color:#00ff00;">}</li>
+</ol></code>
+<h3>動画</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/shyOqnjSqbU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!--ここからCSS　　　　　　ここからCSS　　　　　　　　　　ここからCSS　　　　　　ここからCSS-->
+<style>
+/* --- テーブル全体のスタイル指定 --------------- */
+.tableArea {
+ width          : 100%;             /* 100%幅     */
+ border-collapse: collapse;         /* 境界線結合 */
+ border-spacing : 0;                /* 罫線間余白 */
+ font-size      : 9pt;              /* 文字サイズ */
+ background     : #ffffff;          /* テーブル全体の背景色 */
+}
+/* --- ヘッダーのスタイル指定 ------------------- */
+.tableArea th {
+ text-align    : center;            /* 文字位置   */
+ font-weight   : bold;              /* 太文字     */
+ padding       : 0px 0px;           /* 余白       */
+ border        : 1px #666666 solid; /* 罫線       */
+ background    : #007fff;           /* 背景色     */
+}
+/* --- 明細のスタイル指定 ----------------------- */
+.tableArea td {
+ text-align    : center;            /* 文字位置   */
+ padding       : 0px 0px;           /* 余白       */
+ border        : 1px #666666 solid; /* 罫線       */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*変更ダメ*/
+h3{font-weight: 400;}
+h2{font-weight: 600;}
+a {
+  text-decoration: none;
+}
+.s_link {
+	padding: 0.1em 0.3em 0em 0.3em;
+	background-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(33,150,244,1) 50%);
+	background-position: 0 0;
+	background-size: auto 200%;
+	transition: .3s;
+	color: #2196f4;
+}
+.s_link:hover {
+	background-position: 0 100%;
+	color: #fff;
+}
+h1 {
+  padding: 1rem 2rem;
+   border-top: 4px solid #d8dcdc;
+   border-right: 4px solid #666;
+   border-bottom: 4px solid #333;
+   border-left: 4px solid #868888;
+   border-radius: 0;
+   background-image: -webkit-linear-gradient(135deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+   background-image: linear-gradient(-45deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+}
+
+
+
+
+.btn--orange,
+h2 {
+  border-bottom: 3px solid #000;
+}
+
+
+
+
+.images {
+width: 100%;
+}
+html{
+background-image:url(https://ikoibou-oldblog-ibui2628.netlify.app/old_02/ho.JPG);
+background-color transparent;
+}
+
+/* === BODYのpaddingを調整する ============================== */
+body{
+  padding-top    : 100px;      /* ヘッダーの高さに合わせる */
+}
+
+/* === ヘッダー ============================================= */
+.headerStyle{
+  position    : fixed;
+  top         : 0;
+  left        : 0;
+  right       : 0;
+  height      : 100px;
+  background-image:url(https://ikoibou-oldblog-ibui2628.netlify.app/old_02//s.jpg);
+  z-index     : 10;
+  text-align  : center;
+  font-weight : bold;
+}
+/* === 文字（大） =========================================== */
+.hdStrBig{
+display: inline-block;
+  font-size   : 30px;
+  line-height : 90px;
+  color       : #fff;
+
+}
+.sampley {
+  display       : inline-block;
+ font-size     : 18pt;        /* 文字サイズ */
+ text-align    : center;      /* 文字位置   */
+ cursor        : pointer;     /* カーソル   */
+ padding       : 26px 30px;   /* 余白       */
+ background    : #90ee90;     /* 背景色     */
+ color         : #0000ff;     /* 文字色     */
+ line-height   : 1em;         /* 1行の高さ  */
+ transition    : .3s;         /* なめらか変化 */
+ box-shadow    : 4px 4px 3px #666666;  /* 影の設定 */
+ border        : 2px solid #90ee90;    /* 枠の指定 */
+}
+.sampley:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #90ee90;     /* 背景色     */
+  background    : #0000ff;     /* 文字色     */
+}
+</style>
+</body>
+</html>
